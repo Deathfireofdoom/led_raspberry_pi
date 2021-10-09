@@ -53,4 +53,4 @@ class LedStrip(object):
 
 if __name__ == '__main__':
     led = LedStrip()
-    led.warm_white()
+    led.wake_up_light()
