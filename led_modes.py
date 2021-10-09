@@ -19,7 +19,7 @@ class Pixel(object):
     def __init__(self, color, pixel_id, strip):
         self.strip = strip
         self.color = color
-        self.pixel_id = pixel_id
+        self.pixel_id = str(pixel_id)
 
     def light(self):
         self.strip.setPixelColor(self.pixel_id, self.color)
