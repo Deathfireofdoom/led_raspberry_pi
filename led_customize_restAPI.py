@@ -17,6 +17,8 @@ class LedCustomizer(Resource):
         print(pixel_id)
         b, r, g, w = LED_STRIP.pixels[pixel_id].color_raw
         color = {'b': b, 'r': r, 'g': g, 'w': w}
+        print(color)
+        print(jsonify(color))
         return jsonify(color)
 
 
