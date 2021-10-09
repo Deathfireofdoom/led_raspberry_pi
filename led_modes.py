@@ -28,6 +28,8 @@ class Pixel(object):
 class LedStrip(object):
     """Class to control a SK6812 strip"""
     def __init__(self): # TODO add parameters input if needed.
+        print('LedStrip Init.')
+
         self.led_count = LED_COUNT
         self.led_pin = LED_PIN
         self.led_freq_hz = LED_FREQ_HZ
