@@ -17,10 +17,10 @@ class LedCustomizer(Resource):
         i_plus = request.args.get('iplus')
         i_minus = request.args.get('iminus')
 
-        r = request.args.get('r')
-        g = request.args.get('g')
-        b = request.args.get('b')
-        w = request.args.get('w')
+        r = int(request.args.get('r'))
+        g = int(request.args.get('g'))
+        b = int(request.args.get('b'))
+        w = int(request.args.get('w'))
 
         color_code = (b, r, g, w)
 
