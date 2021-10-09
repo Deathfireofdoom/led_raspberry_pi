@@ -43,6 +43,14 @@ class LedStrip(object):
         self.light(WARM_WHITE)
 
 
+    def wake_up_light(self):
+
+        for i in range(10):
+            for k in range(self.strip.numPixels()):
+                self.strip.setPixelColor(k, Color(0, 0, i*25))
+            self.strip.show()
+            time.sleep(1)
+
 if __name__ == '__main__':
     led = LedStrip()
     led.warm_white()
