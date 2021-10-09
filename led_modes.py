@@ -1,6 +1,8 @@
 import time
 from rpi_ws281x import Color, PixelStrip, ws
 
+from COLORS import *
+
 
 # LED strip configuration:
 LED_COUNT = 150         # Number of LED pixels.
@@ -30,16 +32,15 @@ class LedStrip(object):
                                 self.led_channel, self.led_strip)
         self.strip.begin()
 
-    def light(self,  color, brightness=None):
+    def light(self,  color_code, brightness=None):
+        color = Color(*color_code)
         brightness = (brightness if brightness else self.led_brightness) # Todo make this work
         for i in range(self.strip.numPixels()):
-            print('hello')
             self.strip.setPixelColor(i, color)
         self.strip.show()
 
     def warm_white(self, brightness=None):
-        warm_white = Color(0, 0, 0, 255)
-        self.light(warm_white)
+        self.light(WARM_WHITE)
 
 
 if __name__ == '__main__':
