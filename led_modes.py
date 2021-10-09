@@ -18,6 +18,7 @@ LED_STRIP = ws.SK6812_STRIP_RGBW
 class Pixel(object):
     def __init__(self, color, pixel_id, strip):
         self.strip = strip
+        self.color_raw = color
         self.color = Color(*color)
         self.pixel_id = pixel_id
 

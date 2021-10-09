@@ -12,6 +12,14 @@ class LedCustomizer(Resource):
         super().__init__()
 
 
+    def get(self):
+        pixel_id = int(request.args.get('pixelid'))
+        b, r, g, w = LED_STRIP.pixels[pixel_id].color_raw
+        color = {'b': b, 'r': r, 'g': g, 'w': w}
+        return jsonify(color)
+
+
+
     def post(self):
         i = int(request.args.get('i'))
         i_plus = int(request.args.get('iplus'))
