@@ -13,9 +13,9 @@ class LedCustomizer(Resource):
 
 
     def post(self):
-        i = request.args.get('i')
-        i_plus = request.args.get('iplus')
-        i_minus = request.args.get('iminus')
+        i = int(request.args.get('i'))
+        i_plus = int(request.args.get('iplus'))
+        i_minus = int(request.args.get('iminus'))
 
         r = int(request.args.get('r'))
         g = int(request.args.get('g'))
