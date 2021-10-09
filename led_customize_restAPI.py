@@ -5,11 +5,11 @@ from led_modes import LedStrip
 app = Flask(__name__)
 api = Api(app)
 
+LED_STRIP = LedStrip()
 
 class LedCustomizer(Resource):
     def __init__(self):
         super().__init__()
-        self.led_strip = LedStrip()
 
 
     def post(self):
@@ -25,7 +25,7 @@ class LedCustomizer(Resource):
         color_code = (b, r, g, w)
 
         for pixel_id in range(i - i_minus, i + i_plus):
-            self.led_strip.update_pixel(color_code, pixel_id)
+            LED_STRIP.update_pixel(color_code, pixel_id)
         print(color_code)
 
 #    def post(self, i, i_plus, i_minus, r, g, b, w):
