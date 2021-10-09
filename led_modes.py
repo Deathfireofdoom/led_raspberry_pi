@@ -33,6 +33,7 @@ class LedStrip(object):
     def light(self,  color, brightness=None):
         brightness = (brightness if brightness else self.led_brightness) # Todo make this work
         for i in range(self.strip.numPixels()):
+            print('hello')
             self.strip.setPixelColor(i, color)
 
     def warm_white(self, brightness=None):
