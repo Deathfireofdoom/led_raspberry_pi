@@ -47,7 +47,7 @@ class LedStrip(object):
 
         for i in range(10):
             for k in range(self.strip.numPixels()):
-                self.strip.setPixelColor(k, Color(0, 0, i*25))
+                self.strip.setPixelColor(k, Color(0, 0, 0, i*25))
             self.strip.show()
             time.sleep(1)
 
