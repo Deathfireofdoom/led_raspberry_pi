@@ -1,1 +1,2 @@
 WARM_WHITE = (0, 0, 0, 255)
+DEFAULT_COLOR = (0, 0, 0, 255)

@@ -15,6 +15,15 @@ LED_CHANNEL = 0
 LED_STRIP = ws.SK6812_STRIP_RGBW
 
 
+class Pixel(object):
+    def __init__(self, color, pixel_id, strip):
+        self.strip = strip
+        self.color = color
+        self.pixel_id = pixel_id
+
+    def light(self):
+        self.strip.setPixelColor(self.pixel_id, self.color)
+
 
 class LedStrip(object):
     """Class to control a SK6812 strip"""
@@ -32,9 +41,19 @@ class LedStrip(object):
                                 self.led_channel, self.led_strip)
         self.strip.begin()
 
-    def light_pixel(self, color_code, pixel_id, brightness=None):
-        color = Color(*color_code)
-        self.strip.setPixelColor(pixel_id, color)
+        self.pixels = []
+        for pixel_id in range(self.led_count):
+            self.pixels.append(Pixel(color=DEFAULT_COLOR, pixel_id=pixel_id, strip=self.strip))
+
+        self.update_strip()
+
+    def update_pixel(self, color_code, pixel_id, brightness=None):
+        self.pixels[pixel_id].color = Color(*color_code)
+        self.update_strip()
+
+    def update_strip(self):
+        for pixel in self.pixels:
+            pixel.light()
         self.strip.show()
 
     def light(self,  color_code, brightness=None):
@@ -50,9 +69,6 @@ class LedStrip(object):
 
     def wake_up_light(self):
         start_pixels = [0, len(self.strip.numPixels()) - 1]
-
-
-
 
         for i in range(10):
             for k in range(self.strip.numPixels()):
