@@ -51,6 +51,7 @@ class LedStrip(object):
         self.update_strip()
 
     def update_pixel(self, color_code, pixel_id, brightness=None):
+        self.pixels[pixel_id].color_raw = color_code
         self.pixels[pixel_id].color = Color(*color_code)
         self.update_strip()
 
