@@ -32,6 +32,11 @@ class LedStrip(object):
                                 self.led_channel, self.led_strip)
         self.strip.begin()
 
+    def light_pixel(self, color_code, pixel_id, brightness=None):
+        color = Color(*color_code)
+        self.strip.setPixelColor(pixel_id, color)
+        self.strip.show()
+
     def light(self,  color_code, brightness=None):
         color = Color(*color_code)
         brightness = (brightness if brightness else self.led_brightness) # Todo make this work
@@ -44,6 +49,10 @@ class LedStrip(object):
 
 
     def wake_up_light(self):
+        start_pixels = [0, len(self.strip.numPixels()) - 1]
+
+
+
 
         for i in range(10):
             for k in range(self.strip.numPixels()):
