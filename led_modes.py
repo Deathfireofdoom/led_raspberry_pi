@@ -70,6 +70,11 @@ class LedStrip(object):
     def warm_white(self, brightness=None):
         self.light(WARM_WHITE)
 
+    def turn_off(self):
+        for i in range(self.strip.numPixels()):
+            self.strip.setPixelColor(i, (0, 0, 0, 0))
+        self.strip.show()
+
 
     def wake_up_light(self):
         start_pixels = [0, len(self.strip.numPixels()) - 1]
