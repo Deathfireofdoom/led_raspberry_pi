@@ -10,7 +10,7 @@ LED_STRIP = LedStrip()
 
 
 current_mode = 'off'
-
+print('yeee')
 
 current_brightness = (LED_STRIP.led_brightness // 255) * 100
 
