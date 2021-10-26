@@ -72,9 +72,7 @@ class LedStrip(object):
         self.light(WARM_WHITE)
 
     def turn_off(self):
-        for i in range(self.strip.numPixels()):
-            self.strip.setPixelColor(i, (0, 0, 0, 0))
-        self.strip.show()
+        self.light((0, 0, 0, 0))
 
     def thunder(self):
         self.light((255, 0, 0, 0))
