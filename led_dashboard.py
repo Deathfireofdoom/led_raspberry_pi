@@ -71,7 +71,7 @@ class LedDashboard(Resource):
 
             if mode == 'gr':
                 c1 = (255, 0, 0, 0)
-                c2 = (0, 0, 255, 0)
+                c2 = (0, 255, 0, 0)
                 LED_STRIP.gradient(c1, c2)
 
 
