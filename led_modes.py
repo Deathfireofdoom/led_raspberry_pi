@@ -78,6 +78,23 @@ class LedStrip(object):
         self.light((255, 0, 0, 0))
 
 
+    def christmas_light(self):
+        x = 0
+        color1 = Color(255, 0, 0, 0)
+        color2 = Color(0, 255, 0, 0)
+        color = color1
+        while x < 10:
+            for i in range(self.strip.numPixels()):
+                self.strip.setPixelColor(i, color)
+                if i % 2:
+                    if color == color1:
+                        color = color2
+                    else:
+                        color = color1
+            time.sleep(1)
+            self.strip.show()
+            x += 1
+
     def wake_up_light(self):
         start_pixels = [0, len(self.strip.numPixels()) - 1]
 

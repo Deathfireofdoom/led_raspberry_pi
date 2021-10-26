@@ -49,6 +49,8 @@ class LedDashboard(Resource):
             if mode == 'off':
                 LED_STRIP.turn_off()
                 current_mode = 'off'
+            if mode == 'xmas':
+                LED_STRIP.christmas_light()
 
         if brightness != current_brightness:
             LED_STRIP.led_brightness = 255 * (brightness // 100)
