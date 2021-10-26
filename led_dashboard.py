@@ -74,6 +74,8 @@ class LedDashboard(Resource):
                 c2 = (0, 150, 0, 0)
                 LED_STRIP.gradient(c1, c2)
 
+            if mode == 'sy':
+                LED_STRIP.siren()
 
         if brightness != current_brightness:
             LED_STRIP.led_brightness = 255 * (brightness // 100)

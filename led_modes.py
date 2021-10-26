@@ -97,6 +97,20 @@ class LedStrip(object):
         self.strip.show()
 
 
+    def siren(self, speed=50):
+        color = (0, 0, 0, 0)
+        while True:
+            for i in range(speed):
+                color = (color[0], int(color[1] + i * 255/speed), color[2], color[3])
+                self.light(color)
+                time.sleep(0.5)
+            for i in range(speed):
+                color = (color[0], int(color[1] - i * 255/speed), color[2], color[3])
+                self.light(color)
+                time.sleep(0.5)
+
+
+
     def christmas_light(self):
         x = 0
         color1 = Color(255, 0, 0, 0)
