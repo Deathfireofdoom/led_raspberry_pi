@@ -14,6 +14,22 @@ print('yeee')
 
 current_brightness = (LED_STRIP.led_brightness // 255) * 100
 
+class ColorPicker(Resource):
+    def __init__(self):
+        super().__init__()
+
+    def get(self):
+        pass #TODO Add function to send back color
+
+    def post(self):
+        r = int(request.args.get('r'))
+        g = int(request.args.get('g'))
+        b = int(request.args.get('b'))
+        w = int(request.args.get('w'))
+
+        LED_STRIP.light((r, g, b, w))
+
+
 class LedDashboard(Resource):
     def __init__(self):
         super().__init__()
