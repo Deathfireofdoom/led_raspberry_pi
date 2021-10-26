@@ -76,6 +76,7 @@ class LedDashboard(Resource):
 
 
 api.add_resource(LedDashboard, '/led-dashboard')
+api.add_resource(ColorPicker, '/color-picker')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
