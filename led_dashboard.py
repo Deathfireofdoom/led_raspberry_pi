@@ -8,10 +8,10 @@ api = Api(app)
 
 LED_STRIP = LedStrip()
 
-global current_mode
+
 current_mode = 'off'
 
-global current_brightness
+
 current_brightness = (LED_STRIP.led_brightness // 255) * 100
 
 class LedDashboard(Resource):
@@ -19,6 +19,8 @@ class LedDashboard(Resource):
         super().__init__()
 
     def get(self):
+        global current_mode
+        global current_brightness
         response = {
             'mode': current_mode,
             'brightness': current_brightness
@@ -26,6 +28,9 @@ class LedDashboard(Resource):
         return jsonify(response), 200
 
     def post(self):
+        global current_mode
+        global current_brightness
+
         mode = request.args.get('mode')
         brightness = int(request.args.get('brightness'))
         print(mode)
