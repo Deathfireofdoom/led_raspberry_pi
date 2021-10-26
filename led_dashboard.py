@@ -25,6 +25,8 @@ class LedDashboard(Resource):
     def post(self):
         mode = request.args.get('mode')
         brightness = int(request.args.get('brightness'))
+        print(mode)
+        print(self.current_mode != mode)
 
         if self.current_mode != mode:
             if mode == 'ww':
