@@ -26,6 +26,9 @@ class ColorPicker(Resource):
         g = int(request.args.get('g'))
         b = int(request.args.get('b'))
         w = int(request.args.get('w'))
+        color = (r, g, b, w)
+        print(color)
+        print(*color)
 
         LED_STRIP.light((r, g, b, w))
 
