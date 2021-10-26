@@ -88,10 +88,10 @@ class LedStrip(object):
         print(color_step)
 
         for i in range(self.strip.numPixels()):
-            color = Color(color[0] + color_step[0] * i,
-                          color[1] + color_step[1] * i,
-                          color[2] + color_step[2] * i,
-                          color[3] + color_step[3] * i)
+            color = Color(color[0] - color_step[0] * i,
+                          color[1] - color_step[1] * i,
+                          color[2] - color_step[2] * i,
+                          color[3] - color_step[3] * i)
             self.strip.setPixelColor(i, color)
 
         self.strip.show()
