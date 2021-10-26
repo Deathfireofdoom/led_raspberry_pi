@@ -30,6 +30,7 @@ class LedDashboard(Resource):
 
         if self.current_mode != mode:
             if mode == 'ww':
+                print('hello')
                 LED_STRIP.warm_white()
                 self.current_mode = mode
 
