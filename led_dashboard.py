@@ -54,8 +54,6 @@ class LedDashboard(Resource):
             LED_STRIP.led_brightness = 255 * (brightness // 100)
             current_brightness = brightness
 
-        LED_STRIP.update_strip()
-
         return Response(status=201)
 
 
