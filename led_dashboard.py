@@ -22,15 +22,12 @@ class ColorPicker(Resource):
         pass #TODO Add function to send back color
 
     def post(self):
-        r = int(request.args.get('r'))
+        r = int(request.args.get('r')) #Todo fix weird bug R switch place with G
         g = int(request.args.get('g'))
         b = int(request.args.get('b'))
         w = int(request.args.get('w'))
-        color = (r, g, b, w)
-        print(color)
-        print(*color)
-
-        LED_STRIP.light((r, g, b, w))
+        print((g, r, b, w))
+        LED_STRIP.light((g, r, b, w))
 
 
 class LedDashboard(Resource):

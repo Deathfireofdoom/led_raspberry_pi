@@ -61,6 +61,8 @@ class LedStrip(object):
         self.strip.show()
 
     def light(self,  color_code, brightness=None):
+        print(color_code)
+        print(*color_code)
         color = Color(*color_code)
         brightness = (brightness if brightness else self.led_brightness) # Todo make this work
         print(color)
