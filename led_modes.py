@@ -79,6 +79,20 @@ class LedStrip(object):
     def thunder(self):
         self.light((255, 0, 0, 0))
 
+    def gradient(self, color_code1, color_code2):
+        color = color_code1
+        color_distance = tuple(map(lambda c1, c2: c1 - c2, color_code1, color_code2))
+        color_step = list(map(lambda c: c/self.strip.numPixels()))
+
+        for i in range(self.strip.numPixels()):
+            color = Color(color[0] + color_step[0] * i,
+                          color[1] + color_step[1] * i,
+                          color[2] + color_step[2] * i,
+                          color[3] + color_step[3] * i)
+            self.strip.setPixelColor(i, color)
+
+        self.strip.show()
+
 
     def christmas_light(self):
         x = 0

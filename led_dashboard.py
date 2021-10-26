@@ -65,8 +65,15 @@ class LedDashboard(Resource):
             if mode == 'off':
                 LED_STRIP.turn_off()
                 current_mode = 'off'
+
             if mode == 'xmas':
                 LED_STRIP.christmas_light()
+
+            if mode == 'gr':
+                c1 = (255, 0, 0, 0)
+                c2 = (0, 0, 255, 0)
+                LED_STRIP.gradient(c1, c2)
+
 
         if brightness != current_brightness:
             LED_STRIP.led_brightness = 255 * (brightness // 100)
