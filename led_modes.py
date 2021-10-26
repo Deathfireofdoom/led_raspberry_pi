@@ -83,6 +83,7 @@ class LedStrip(object):
         color = color_code1
         color_distance = list(map(lambda c1, c2: c1 - c2, color_code1, color_code2))
         color_step = list(map(lambda c: c/self.strip.numPixels(), color_distance))
+        print(color[0] + color_step[0])
 
         for i in range(self.strip.numPixels()):
             color = Color(color[0] + color_step[0] * i,
