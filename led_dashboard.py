@@ -8,7 +8,10 @@ api = Api(app)
 
 LED_STRIP = LedStrip()
 
+global current_mode
 current_mode = 'off'
+
+global current_brightness
 current_brightness = (LED_STRIP.led_brightness // 255) * 100
 
 class LedDashboard(Resource):
