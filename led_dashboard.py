@@ -31,6 +31,10 @@ class LedDashboard(Resource):
                 LED_STRIP.warm_white()
                 self.current_mode = mode
 
+            if mode == 'th':
+                LED_STRIP.thunder()
+                self.current_mode = mode
+
             if mode == 'off':
                 LED_STRIP.turn_off()
                 self.current_mode = 'off'

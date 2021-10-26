@@ -75,6 +75,9 @@ class LedStrip(object):
             self.strip.setPixelColor(i, (0, 0, 0, 0))
         self.strip.show()
 
+    def thunder(self):
+        self.light((255, 0, 0, 0))
+
 
     def wake_up_light(self):
         start_pixels = [0, len(self.strip.numPixels()) - 1]
