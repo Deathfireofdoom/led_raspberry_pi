@@ -24,7 +24,7 @@ class LedDashboard(Resource):
 
     def post(self):
         mode = request.args.get('mode')
-        brightness = request.args.get('brightness')
+        brightness = int(request.args.get('brightness'))
 
         if self.current_mode != mode:
             if mode == 'ww':
@@ -46,6 +46,7 @@ class LedDashboard(Resource):
         LED_STRIP.update_strip()
 
         return Response(status=201)
+
 
 api.add_resource(LedDashboard, '/led-dashboard')
 
