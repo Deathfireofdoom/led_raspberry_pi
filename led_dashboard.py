@@ -8,17 +8,17 @@ api = Api(app)
 
 LED_STRIP = LedStrip()
 
+current_mode = 'off'
+current_brightness = (LED_STRIP.led_brightness // 255) * 100
 
 class LedDashboard(Resource):
     def __init__(self):
         super().__init__()
-        self.current_mode = 'off'
-        self.current_brightness = (LED_STRIP.led_brightness // 255) * 100
 
     def get(self):
         response = {
-            'mode': self.current_mode,
-            'brightness': self.current_brightness
+            'mode': current_mode,
+            'brightness': current_brightness
         }
         return jsonify(response), 200
 
@@ -26,25 +26,25 @@ class LedDashboard(Resource):
         mode = request.args.get('mode')
         brightness = int(request.args.get('brightness'))
         print(mode)
-        print(self.current_mode != mode)
+        print(current_mode != mode)
 
-        if self.current_mode != mode:
+        if current_mode != mode:
             if mode == 'ww':
                 print('hello')
                 LED_STRIP.warm_white()
-                self.current_mode = mode
+                current_mode = mode
 
             if mode == 'th':
                 LED_STRIP.thunder()
-                self.current_mode = mode
+                current_mode = mode
 
             if mode == 'off':
                 LED_STRIP.turn_off()
-                self.current_mode = 'off'
+                current_mode = 'off'
 
-        if brightness != self.current_brightness:
+        if brightness != current_brightness:
             LED_STRIP.led_brightness = 255 * (brightness // 100)
-            self.current_brightness = brightness
+            current_brightness = brightness
 
         LED_STRIP.update_strip()
 
