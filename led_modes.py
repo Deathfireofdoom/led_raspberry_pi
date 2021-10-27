@@ -126,6 +126,7 @@ class LedStrip(object):
                          max(int(color[2] - color_step[2] / speed), 0), max(int(color[3] - color_step[3] / speed), 0))
                 self.light(color)
                 time.sleep(0.01)
+                print(color)
 
 
 
@@ -137,6 +138,7 @@ class LedStrip(object):
                 #max(int(color[2] + i * color_step[2] / speed), 0), max(int(color[3] + i * color_step[3] / speed), 0))
                 self.light(color)
                 time.sleep(0.01)
+                print(color)
 
             x += 1
 
