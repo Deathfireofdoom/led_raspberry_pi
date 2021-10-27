@@ -122,13 +122,13 @@ class LedStrip(object):
                 print(color_step)
                 print(int(color[1] + i * color_step[1] / speed))
                 print(color)
-                time.sleep(0.1)
+
 
             for i in range(speed):
                 color = (int(color[0] - i * color_step[0] / speed), int(color[1] - i * color_step[1] / speed),
                          int(color[2] - i * color_step[2] / speed), int(color[3] - i * color_step[3] / speed))
                 self.light(color)
-                time.sleep(0.1)
+
             x += 1
 
 
