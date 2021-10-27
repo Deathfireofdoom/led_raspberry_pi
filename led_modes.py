@@ -61,11 +61,8 @@ class LedStrip(object):
         self.strip.show()
 
     def light(self,  color_code, brightness=None):
-        print(color_code)
-        print(*color_code)
         color = Color(*color_code)
         brightness = (brightness if brightness else self.led_brightness) # Todo make this work
-        print(color)
         for i in range(self.strip.numPixels()):
             self.strip.setPixelColor(i, color)
         self.strip.show()
@@ -108,6 +105,26 @@ class LedStrip(object):
                 color = (color[0], int(color[1] - i * 255/speed), color[2], color[3])
                 self.light(color)
                 time.sleep(0.5)
+
+    def pulse(self, color_code1, color_code2, speed=100, times=10):
+        color = color_code1
+        color_distance = list(map(lambda c1, c2: c1 - c2, color_code1, color_code2))
+        color_step = list(map(lambda c: c / self.strip.numPixels(), color_distance))
+
+        x = 0
+        while x < times:
+            for i in range(speed):
+                color = (int(color[0] + i * color_step[0] / speed), int(color[1] + i * color_step[1] / speed),
+                         int(color[2] + i * color_step[2] / speed), int(color[3] + i * color_step[3] / speed))
+                self.light(color)
+                time.sleep(0.1)
+
+            for i in range(speed):
+                color = (int(color[0] - i * color_step[0] / speed), int(color[1] - i * color_step[1] / speed),
+                         int(color[2] - i * color_step[2] / speed), int(color[3] - i * color_step[3] / speed))
+                self.light(color)
+                time.sleep(0.1)
+            x += 1
 
 
 
