@@ -106,7 +106,7 @@ class LedStrip(object):
                 self.light(color)
                 time.sleep(0.5)
 
-    def pulse(self, color_code1, color_code2, speed=20, times=10):
+    def pulse(self, color_code1, color_code2, speed=10, times=10):
         color = color_code1
         color_distance = list(map(lambda c1, c2: c1 - c2, color_code1, color_code2))
         color_step = list(map(lambda c: c / self.strip.numPixels(), color_distance))
@@ -118,6 +118,7 @@ class LedStrip(object):
                 color = [int(color[0] - i * color_step[0] / speed), int(color[1] - i * color_step[1] / speed),
                          int(color[2] - i * color_step[2] / speed), int(color[3] - i * color_step[3] / speed)]
                 self.light(color)
+                time.sleep(0.01)
                 #print(i)
                 #print(color_step)
                 #print(int(color[1] + i * color_step[1] / speed))
@@ -128,6 +129,7 @@ class LedStrip(object):
                 color = (int(color[0] - i * color_step[0] / speed), int(color[1] - i * color_step[1] / speed),
                          int(color[2] - i * color_step[2] / speed), int(color[3] - i * color_step[3] / speed))
                 self.light(color)
+                time.sleep(0.01)
 
             x += 1
 
