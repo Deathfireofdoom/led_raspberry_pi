@@ -1,5 +1,10 @@
 import time
+import random
 from rpi_ws281x import Color, PixelStrip, ws
+
+
+
+
 
 from COLORS import *
 
@@ -114,10 +119,14 @@ class LedStrip(object):
         x = 0
         while x < times:
             for i in range(speed):
-                color = (max(int(color[0] - i * color_step[0] / speed), 0), max(int(color[1] - i * color_step[1] / speed), 0),
-                         max(int(color[2] - i * color_step[2] / speed), 0), max(int(color[3] - i * color_step[3] / speed), 0))
+                #color = (
+                #max(int(color[0] - i * color_step[0] / speed), 0), max(int(color[1] - i * color_step[1] / speed), 0),
+                #max(int(color[2] - i * color_step[2] / speed), 0), max(int(color[3] - i * color_step[3] / speed), 0))
+                color = (max(int(color[0] - color_step[0] / speed), 0), max(int(color[1] - color_step[1] / speed), 0),
+                         max(int(color[2] - color_step[2] / speed), 0), max(int(color[3] - color_step[3] / speed), 0))
                 self.light(color)
                 time.sleep(0.01)
+
 
 
             for i in range(speed):
@@ -154,6 +163,28 @@ class LedStrip(object):
                 self.strip.setPixelColor(k, Color(0, 0, 0, i*25))
             self.strip.show()
             time.sleep(1)
+
+    def fire(self):
+
+        color = color_code1
+        color_distance = list(map(lambda c1, c2: c1 - c2, color_code1, color_code2))
+        color_step = list(map(lambda c: c / speed, color_distance))
+
+
+class spark(object):
+    def __init__(self, _id, color_code1, color_code2, speed=20):
+        self.id = _id
+        self.color = color_code1
+        color_distance = list(map(lambda c1, c2: c1 - c2, color_code1, color_code2))
+        color_step = list(map(lambda c: (c / speed) * random.random(), color_distance))
+
+    def next_color(self):
+        self.color = (max(int(self.color[0] - self.color_step[0] / self.speed), 0), max(int(self.color[1] - self.color_step[1] / self.speed), 0),
+                 max(int(self.color[2] - self.color_step[2] / self.speed), 0), max(int(self.color[3] - self.color_step[3] / self.speed), 0))
+
+
+
+
 
 if __name__ == '__main__':
     led = LedStrip()
