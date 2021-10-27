@@ -6,7 +6,7 @@ LED_STRIP = LedStrip()
 COLOR1 = (0, 255, 0, 0)
 COLOR2 = (0, 0, 255, 0)
 COLOR3 = (255, 0, 0, 0)
-COLOR4 = (0, 200, 0, 0)
+COLOR4 = (0, 100, 0, 0)
 
 
 
