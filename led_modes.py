@@ -111,6 +111,8 @@ class LedStrip(object):
         color_distance = list(map(lambda c1, c2: c1 - c2, color_code1, color_code2))
         color_step = list(map(lambda c: c / self.strip.numPixels(), color_distance))
 
+        print(color_distance)
+        print(color_step)
         x = 0
         while x < times:
             print(x)
@@ -141,7 +143,8 @@ class LedStrip(object):
                 time.sleep(0.01)
 
             x += 1
-
+        print(color_distance)
+        print(color_step)
 
 
     def christmas_light(self):
