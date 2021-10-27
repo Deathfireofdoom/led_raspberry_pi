@@ -115,10 +115,11 @@ class LedStrip(object):
         while x < times:
             print(x)
             for i in range(speed):
-                color = tuple(max(x, 0) for x in (int(color[0] - i * color_step[0] / speed), int(color[1] - i * color_step[1] / speed),
-                         int(color[2] - i * color_step[2] / speed), int(color[3] + i * color_step[3] / speed)))
+                color = (int(color[0] - i * color_step[0] / speed), int(color[1] - i * color_step[1] / speed),
+                         int(color[2] - i * color_step[2] / speed), int(color[3] - i * color_step[3] / speed))
                 self.light(color)
                 time.sleep(0.01)
+
                 #print(i)
                 #print(color_step)
                 #print(int(color[1] + i * color_step[1] / speed))
@@ -126,8 +127,8 @@ class LedStrip(object):
 
 
             for i in range(speed):
-                color = (int(color[0] + i * color_step[0] / speed), int(color[1] + i * color_step[1] / speed),
-                         int(color[2] + i * color_step[2] / speed), int(color[3] + i * color_step[3] / speed))
+                color = (int(color[0] - i * color_step[0] / speed), int(color[1] - i * color_step[1] / speed),
+                         int(color[2] - i * color_step[2] / speed), int(color[3] - i * color_step[3] / speed))
                 print(color)
                 self.light(color)
                 time.sleep(0.01)
