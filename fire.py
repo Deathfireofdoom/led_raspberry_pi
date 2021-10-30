@@ -7,7 +7,7 @@ import time
 LED_STRIP = LedStrip()
 
 class Fire(object):
-    def __init__(self, color_code1=(0, 166, 25, 0), color_code2=(0, 240, 100, 0)):
+    def __init__(self, color_code1=(119, 17, 0, 0), color_code2=(162, 17, 0, 10)):
         color_distance = np.subtract(color_code2, color_code1)
         self.strip = LED_STRIP.strip
 
@@ -15,13 +15,10 @@ class Fire(object):
 
     def burn(self):
         for i, spark in enumerate(self.sparks):
-            #self.strip.setPixelColor(i, Color(*spark.next_color()))
             color = spark.next_color()
             color = tuple(int(c) for c in color)
-            print(color)
-            print(*color)
-            print(type(color[0]))
             self.strip.setPixelColor(i, Color(*color))
+        time.sleep(0.01)
         self.strip.show()
 
 class Spark(object):
