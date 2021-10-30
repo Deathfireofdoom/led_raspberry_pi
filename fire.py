@@ -81,6 +81,6 @@ class Spark(object):
 
 
 if __name__ == '__main__':
-    fire = Fire(color_code1=(0, 150, 0, 0), color_code2=(0, 255, 0, 0))
+    fire = Fire(color_code1=(0, 100, 0, 0), color_code2=(0, 255, 0, 0))
     while True:
         fire.burn()
