@@ -2,6 +2,7 @@ import numpy as np
 import random
 from led_modes import LedStrip
 from rpi_ws281x import Color
+import time
 
 LED_STRIP = LedStrip()
 
@@ -31,6 +32,7 @@ class Spark(object):
         for attribute in dir(self):
             print(attribute)
 
+        time.sleep(5)
 
     def reset(self):
         self.alive = False
