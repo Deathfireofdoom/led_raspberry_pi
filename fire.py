@@ -1,18 +1,21 @@
 import numpy as np
 import random
+from led_modes import LedStrip
+from rpi_ws281x import Color
+
+LED_STRIP = LedStrip()
 
 class Fire(object):
     def __init__(self, color_code1=(    0, 166, 25, 0), color_code2=(0, 240, 100, 0)):
         color_distance = np.subtract(color_code2, color_code1)
+        self.strip = LED_STRIP
 
+        self.sparks = [Spark(np.array(color_code1), color_distance) for _ in range(self.strip.numPixels())]
 
-        self.sparks = [Spark(np.array(color_code1), color_distance) for _ in range(100)]
-    
     def burn(self):
         for i, spark in enumerate(self.sparks):
-            if i == 10:
-                print(spark.next_color())
-            
+            self.strip.setPixelColor(i, Color(spark.next_color()))
+
 
 class Spark(object):
     def __init__(self, base_color, color_distance, threshold=0.5, speed_threshold=[10, 20], intensity_threshold=[0.5, 0.8]):
@@ -60,5 +63,5 @@ class Spark(object):
 
 if __name__ == '__main__':
     fire = Fire((0, 166, 0, 0))
-    for i in range(10):
+    while True:
         fire.burn()
