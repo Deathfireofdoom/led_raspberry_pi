@@ -16,7 +16,10 @@ class Fire(object):
     def burn(self):
         for i, spark in enumerate(self.sparks):
             #self.strip.setPixelColor(i, Color(*spark.next_color()))
-            self.strip.setPixelColor(i, Color(*spark.next_color()))
+            color = spark.next_color()
+            print(color)
+            print(*color)
+            self.strip.setPixelColor(i, Color(*color))
         self.strip.show()
 
 class Spark(object):
