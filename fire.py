@@ -33,7 +33,6 @@ class Spark(object):
             print(attr)
             print("obj.%s = %r" % (attr, getattr(self, attr)))
 
-        time.sleep(5)
 
     def reset(self):
         self.alive = False
