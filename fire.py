@@ -19,7 +19,7 @@ class Fire(object):
             color = spark.next_color()
             print(color)
             print(*color)
-            self.strip.setPixelColor(i, Color(*color))
+            self.strip.setPixelColor(i, Color(color))
         self.strip.show()
 
 class Spark(object):
