@@ -28,6 +28,9 @@ class Spark(object):
         self.speed_threshold = speed_threshold
         self.reset()
 
+        for attribute in dir(self):
+            print(attribute)
+
 
     def reset(self):
         self.alive = False
