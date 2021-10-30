@@ -39,11 +39,13 @@ class Spark(object):
             self.start()
         
         if not self.alive:
+            print(self.base_color)
             return self.base_color
         
         else:
             self.time_alive += 1
             if self.time_alive < self.speed / 2:
+                print(np.add(self.base_color, self.color_distance * self.time_alive / self.speed).astype(int))
                 return np.add(self.base_color, self.color_distance * self.time_alive / self.speed).astype(int)
             else:
                 tmp_color = np.add(self.base_color, self.color_distance * (self.speed - self.time_alive) / self.speed)
