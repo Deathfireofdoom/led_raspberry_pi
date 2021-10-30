@@ -18,7 +18,7 @@ class Fire(object):
             color = spark.next_color()
             color = tuple(min(max(int(c), 0), 255) for c in color)
             self.strip.setPixelColor(i, Color(*color))
-        time.sleep(0.01)
+        time.sleep(0.1)
         self.strip.show()
 
 class Spark(object):
