@@ -22,17 +22,13 @@ class Fire(object):
         self.strip.show()
 
 class Spark(object):
-    def __init__(self, base_color, color_distance, threshold=0.5, speed_threshold=[10, 20], intensity_threshold=[0.5, 0.8]):
+    def __init__(self, base_color, color_distance, threshold=0.8, speed_threshold=[10, 20], intensity_threshold=[0.5, 0.8]):
         self.base_color = base_color
         self.color_distance = color_distance
         self.threshold = threshold
         self.intensity_threshold = intensity_threshold
         self.speed_threshold = speed_threshold
         self.reset()
-
-        for attr in dir(self):
-            print(attr)
-            print("obj.%s = %r" % (attr, getattr(self, attr)))
 
 
     def reset(self):
