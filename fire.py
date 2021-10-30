@@ -36,6 +36,7 @@ class Spark(object):
 
     def reset(self):
         self.alive = False
+        self.time_alive = 0
         self.speed = None
         self.intensity = None
 
