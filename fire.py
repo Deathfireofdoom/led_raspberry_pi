@@ -17,7 +17,7 @@ class Fire(object):
         for i, spark in enumerate(self.sparks):
             #self.strip.setPixelColor(i, Color(*spark.next_color()))
             color = spark.next_color()
-            color = (int(c) for c in color)
+            color = tuple(int(c) for c in color)
             print(color)
             print(*color)
             print(type(color[0]))
