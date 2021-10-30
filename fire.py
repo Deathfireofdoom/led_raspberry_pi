@@ -40,7 +40,7 @@ class Spark(object):
         
         if not self.alive:
 
-            return self.base_color
+            return tuple(self.base_color)
         
         else:
             self.time_alive += 1
