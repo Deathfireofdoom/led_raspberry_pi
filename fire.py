@@ -6,9 +6,9 @@ from rpi_ws281x import Color
 LED_STRIP = LedStrip()
 
 class Fire(object):
-    def __init__(self, color_code1=(    0, 166, 25, 0), color_code2=(0, 240, 100, 0)):
+    def __init__(self, color_code1=(0, 166, 25, 0), color_code2=(0, 240, 100, 0)):
         color_distance = np.subtract(color_code2, color_code1)
-        self.strip = LED_STRIP
+        self.strip = LED_STRIP.strip
 
         self.sparks = [Spark(np.array(color_code1), color_distance) for _ in range(self.strip.numPixels())]
 
@@ -62,6 +62,6 @@ class Spark(object):
 
 
 if __name__ == '__main__':
-    fire = Fire((0, 166, 0, 0))
+    fire = Fire()
     while True:
         fire.burn()
