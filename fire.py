@@ -18,7 +18,7 @@ class Fire(object):
             print(Color(*spark.next_color()), i)
             #self.strip.setPixelColor(i, Color(*spark.next_color()))
             self.strip.setPixelColor(i, Color(0, 166, 0, 0))
-
+        self.strip.show()
 
 class Spark(object):
     def __init__(self, base_color, color_distance, threshold=0.5, speed_threshold=[10, 20], intensity_threshold=[0.5, 0.8]):
