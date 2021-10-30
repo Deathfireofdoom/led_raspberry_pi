@@ -53,6 +53,7 @@ class Spark(object):
                 tmp_color = np.add(self.base_color, self.color_distance * (self.speed - self.time_alive) / self.speed)
                 if self.time_alive > self.speed:
                     self.reset
+                print(tuple(tmp_color.astype(int)))
                 return tuple(tmp_color.astype(int))
             
             
