@@ -7,7 +7,7 @@ import time
 LED_STRIP = LedStrip()
 
 class Fire(object):
-    def __init__(self, color_code1=(17, 119, 0, 0), color_code2=(17, 162, 0, 10)):
+    def __init__(self, color_code1=(136, 253, 0, 0), color_code2=(255, 223, 24, 0)):
         color_distance = np.subtract(color_code2, color_code1)
         self.strip = LED_STRIP.strip
 
@@ -66,6 +66,6 @@ class Spark(object):
 
 
 if __name__ == '__main__':
-    fire = Fire(color_code1=(0, 100, 0, 0), color_code2=(0, 255, 0, 0))
+    fire = Fire()
     while True:
         fire.burn()
