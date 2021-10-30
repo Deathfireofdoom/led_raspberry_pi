@@ -169,25 +169,41 @@ class LedStrip(object):
             self.strip.show()
             time.sleep(1)
 
-    def fire(self):
+    def fire(self, color_code1=(0, 150, 0, 0), color_code2=(0, 255, 0,0)):
 
         color = color_code1
-        color_distance = list(map(lambda c1, c2: c1 - c2, color_code1, color_code2))
-        color_step = list(map(lambda c: c / speed, color_distance))
+        sparks = {}
+
+        while True:
+            if 0.5 < random.random():
+                sparks[random.randint(0, self.strip.numPixels())] = spark(color_code1, color_code2)
+
+            for pixel_id in range(self.strip.numPixels()):
+                self.strip.setPixelColor(pixel_id, Color(sparks[pixel_id].next_color() if pixel_id in sparks.keys() else color_code1))
+
 
 
 class spark(object):
-    def __init__(self, _id, color_code1, color_code2, speed=20):
-        self.id = _id
+    def __init__(self, color_code1, color_code2, speed=20):
         self.color = color_code1
-        color_distance = list(map(lambda c1, c2: c1 - c2, color_code1, color_code2))
-        color_step = list(map(lambda c: (c / speed) * random.random(), color_distance))
+        self.color_distance = list(map(lambda c1, c2: c1 - c2, color_code1, color_code2))
+        self.color_step = list(map(lambda c: (c / speed) * random.random(), self.color_distance))
+        self.step = 0
+        self.speed = speed
 
     def next_color(self):
-        self.color = (max(int(self.color[0] - self.color_step[0] / self.speed), 0), max(int(self.color[1] - self.color_step[1] / self.speed), 0),
-                 max(int(self.color[2] - self.color_step[2] / self.speed), 0), max(int(self.color[3] - self.color_step[3] / self.speed), 0))
-
-
+        if self.step < self.speed / 2:
+            self.color = (max(int(self.color[0] + self.color_step[0] / self.speed), 0),
+                          max(int(self.color[1] + self.color_step[1] / self.speed), 0),
+                          max(int(self.color[2] + self.color_step[2] / self.speed), 0),
+                          max(int(self.color[3] + self.color_step[3] / self.speed), 0))
+        else:
+            self.color = (max(int(self.color[0] - self.color_step[0] / self.speed), 0),
+                          max(int(self.color[1] - self.color_step[1] / self.speed), 0),
+                          max(int(self.color[2] - self.color_step[2] / self.speed), 0),
+                          max(int(self.color[3] - self.color_step[3] / self.speed), 0))
+        self.step += 1
+        return self.color
 
 
 
