@@ -39,7 +39,7 @@ class Spark(object):
             self.start()
         
         if not self.alive:
-            print(tuple(self.base_color))
+            print(*tuple(self.base_color))
             return tuple(self.base_color)
         
         else:
