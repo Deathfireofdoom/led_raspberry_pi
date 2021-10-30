@@ -43,31 +43,20 @@ class Spark(object):
 
 
     def next_color(self):
-        if not self.alive and  self.threshold < random.random():
-            print('yesss')
+        if not self.alive and self.threshold < random.random():
             self.start()
         
         if not self.alive:
-            print(*tuple(self.base_color))
             return tuple(self.base_color)
         
         else:
             self.time_alive += 1
             if self.time_alive < self.speed / 2:
-                print(self.color_distance * self.time_alive / self.speed)
-
-                print(np.add(self.base_color, self.color_distance * self.time_alive / self.speed).astype(int))
                 return tuple(np.add(self.base_color, self.color_distance * self.time_alive / self.speed).astype(int))
             else:
-                print(self.time_alive)
-                print(self.speed)
-                print(self.speed - self.time_alive)
-                print((self.speed - self.time_alive) /self.speed)
                 tmp_color = np.add(self.base_color, self.color_distance * (self.speed - self.time_alive) / self.speed)
                 if self.time_alive > self.speed:
                     self.reset()
-                print(tuple(tmp_color.astype(int)))
-                print('esss')
                 return tuple(tmp_color.astype(int))
             
             
