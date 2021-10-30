@@ -29,8 +29,9 @@ class Spark(object):
         self.speed_threshold = speed_threshold
         self.reset()
 
-        for attribute in dir(self):
-            print(attribute)
+        for attr in dir(self):
+            print(attr)
+            print("obj.%s = %r" % (attr, getattr(self, attr)))
 
         time.sleep(5)
 
