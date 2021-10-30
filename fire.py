@@ -14,7 +14,7 @@ class Fire(object):
 
     def burn(self):
         for i, spark in enumerate(self.sparks):
-            self.strip.setPixelColor(i, Color(spark.next_color()))
+            self.strip.setPixelColor(i, Color(*spark.next_color()))
 
 
 class Spark(object):
@@ -39,8 +39,8 @@ class Spark(object):
             self.start()
         
         if not self.alive:
-            print(self.base_color)
-            return tuple(self.base_color)
+
+            return self.base_color
         
         else:
             self.time_alive += 1
