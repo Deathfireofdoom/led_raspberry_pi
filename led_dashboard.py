@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify, Response
 from flask_restful import Resource, Api
 from led_modes import LedStrip
-
+from realistic_flame import Flame
+from fire import Fire
 
 app = Flask(__name__)
 api = Api(app)
@@ -54,12 +55,13 @@ class LedDashboard(Resource):
 
         if current_mode != mode:
             if mode == 'ww':
-                print('hello')
-                LED_STRIP.warm_white()
+                Fire().burn()
+                #LED_STRIP.warm_white()
                 current_mode = mode
 
             if mode == 'th':
-                LED_STRIP.thunder()
+                #LED_STRIP.thunder()
+                Flame().burn()
                 current_mode = mode
 
             if mode == 'off':
