@@ -25,7 +25,7 @@ class Flame(object):
         print([all(color == (0, 0, 0, 0)) for color in self.cells])
         while not all([all(color == (0, 0, 0, 0)) for color in self.cells]):
             self.calculate_temperature()
-            sleep(0.01)
+
 
 
 
