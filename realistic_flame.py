@@ -14,7 +14,9 @@ from gradient import FireGradient
 
 class Flame(object):
     def __init__(self, size=60, cooling=20):
-        self.strip = LedStrip().strip
+
+        self.strip = LedStrip().light((0,0,0,0)).strip
+
         self.size = self.strip.numPixels()
         self.cooling = cooling
         self.cells = np.zeros(self.strip.numPixels())

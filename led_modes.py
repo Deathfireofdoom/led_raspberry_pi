@@ -71,6 +71,7 @@ class LedStrip(object):
         for i in range(self.strip.numPixels()):
             self.strip.setPixelColor(i, color)
         self.strip.show()
+        return self
 
     def warm_white(self, brightness=None):
         self.light(WARM_WHITE)
