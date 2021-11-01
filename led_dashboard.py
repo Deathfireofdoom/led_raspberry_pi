@@ -58,12 +58,12 @@ class LedDashboard(Resource):
 
         if current_mode != mode:
             if mode == 'ww':
-                fire.burn()
+                self.fire.burn()
                 #LED_STRIP.warm_white()
                 current_mode = mode
 
             if mode == 'th':
-                flame.burn()
+                self.flame.burn()
                 #LED_STRIP.thunder()
 
                 current_mode = mode
