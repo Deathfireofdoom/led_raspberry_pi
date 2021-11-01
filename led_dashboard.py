@@ -30,12 +30,13 @@ class ColorPicker(Resource):
         print((g, r, b, w))
         LED_STRIP.light((g, r, b, w))
 
-flame = Flame()
-fire = Fire()
+
 
 class LedDashboard(Resource):
     def __init__(self):
         super().__init__()
+        self.flame = Flame()
+        self.fire = Fire()
 
     def get(self):
         global current_mode
