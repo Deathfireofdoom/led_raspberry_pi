@@ -32,7 +32,7 @@ class Flame(object):
 
 
 
-    def burn(self, spark_cells=range(30), threshold=1, explosion_heat=[800, 900]):
+    def burn(self, spark_cells=range(20), threshold=1, explosion_heat=[900, 1000]):
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
