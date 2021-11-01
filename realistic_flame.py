@@ -23,7 +23,7 @@ class Flame(object):
         for i in range(number_of_explosion):
             self.cells[i] = heat
 
-        while not all(color == (0, 0, 0, 0) for color in self.cells):
+        while not (color == (0, 0, 0, 0) for color in self.cells).all():
             self.calculate_temperature()
             sleep(0.01)
 
