@@ -19,6 +19,7 @@ class Flame(object):
         self.cooling = cooling
         self.cells = np.zeros(self.strip.numPixels())
         self.gradient = FireGradient()
+        print(self.size)
 
     def explosion(self, heat=1700, number_of_explosion=10):
         for i in range(number_of_explosion):
@@ -31,14 +32,12 @@ class Flame(object):
 
 
 
-    def burn(self, spark_cells=[0, 1, 2], threshold=0.1, explosion_heat=[1000, 1200]):
+    def burn(self, spark_cells=[0, 1, 2,], threshold=0.1, explosion_heat=[1000, 1200]):
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
 
-        self.cells[-(self.size - random.sample(spark_cells, 1))] = random.randint(*explosion_heat)
-        self.cells[-(self.size - random.sample(spark_cells, 1))] = random.randint(*explosion_heat)
-        self.cells[-(self.size - random.sample(spark_cells, 1))] = random.randint(*explosion_heat)
+
 
 
         while True:
