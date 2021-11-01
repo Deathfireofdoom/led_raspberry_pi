@@ -15,8 +15,9 @@ from gradient import FireGradient
 class Flame(object):
     def __init__(self, size=60, cooling=10):
         self.strip = LedStrip().strip
+        self.size = self.strip.numPixels()
         self.cooling = cooling
-        self.cells = np.zeros(size)
+        self.cells = np.zeros(self.strip.numPixels())
         self.gradient = FireGradient()
 
     def explosion(self, heat=1700, number_of_explosion=10):
@@ -34,6 +35,12 @@ class Flame(object):
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
+
+        self.cells[-(self.size - random.sample(spark_cells, 1))] = random.randint(*explosion_heat)
+        self.cells[-(self.size - random.sample(spark_cells, 1))] = random.randint(*explosion_heat)
+        self.cells[-(self.size - random.sample(spark_cells, 1))] = random.randint(*explosion_heat)
+
+
         while True:
             if random.random() < threshold:
                 self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
