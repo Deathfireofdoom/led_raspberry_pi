@@ -19,7 +19,7 @@ class Flame(object):
         self.cells = np.zeros(size)
         self.gradient = FireGradient()
 
-    def explosion(self, heat=1200, number_of_explosion=3):
+    def explosion(self, heat=1700, number_of_explosion=3):
         for i in range(number_of_explosion):
             self.cells[i] = heat
         print([all(color == (0, 0, 0, 0)) for color in self.cells])
