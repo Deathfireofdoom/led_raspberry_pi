@@ -53,6 +53,7 @@ class Flame(object):
             self.cells[i] = max(0, new_temp - self.cooling) if not np.isnan(new_temp) else 0.0
 
             inverted_i = self.size - i - 1
+            print(i, inverted_i)
             self.strip.setPixelColor(inverted_i, self.gradient.get_color(new_temp))
             self.cells[inverted_i] = max(0, new_temp - self.cooling) if not np.isnan(new_temp) else 0.0
 
