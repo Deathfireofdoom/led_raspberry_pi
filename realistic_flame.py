@@ -31,6 +31,7 @@ class Flame(object):
 
 
     def fire_place(self, height=10, threshold):
+        pass
 
 
     def burn(self, spark_cells=range(20), threshold=1, explosion_heat=[900, 1000]):
