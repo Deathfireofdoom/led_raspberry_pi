@@ -13,7 +13,7 @@ from gradient import FireGradient
 
 
 class Flame(object):
-    def __init__(self, size=60, cooling=20):
+    def __init__(self, size=60, cooling=10):
 
         self.strip = LedStrip().light((0,0,0,0)).strip
 
