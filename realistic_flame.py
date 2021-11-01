@@ -28,6 +28,7 @@ class Flame(object):
             if random.random() < threshold:
                 self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
             self.calculate_temperature()
+            sleep(0.01)
 
     def calculate_temperature(self, span=2):
         for i in range(len(self.cells)):
