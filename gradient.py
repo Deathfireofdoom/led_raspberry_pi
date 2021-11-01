@@ -55,7 +55,7 @@ class FireGradient(Gradient):
     def _fire_colors(self):
         self.colors = []
         self.colors.append(GradientColor(color=(0, 0, 0, 0), location=0))
-        self.colors.append(GradientColor(color=(0, 0, 0, 0), location=300))
+        self.colors.append(GradientColor(color=(0, 0, 0, 0), location=500))
         self.colors.append(GradientColor(color=(0, 142, 0, 0), location=600))
         self.colors.append(GradientColor(color=(64, 254, 0, 0), location=800))
         self.colors.append(GradientColor(color=(164, 254, 0, 0), location=900))
