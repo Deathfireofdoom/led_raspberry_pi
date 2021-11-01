@@ -65,6 +65,7 @@ class FireGradient(Gradient):
 
 if __name__ == '__main__':
     color1 = GradientColor(color=(0, 0, 0, 0), location=0)
+    color1 = GradientColor(color=(0, 0, 0, 0), location=200)
     color2 = GradientColor(color=(0, 255, 0, 0), location=300)
     color3 = GradientColor(color=(0, 0, 255, 0), location=500)
     color4 = GradientColor(color=(0, 0, 0, 255), location=1300)
