@@ -30,6 +30,8 @@ class ColorPicker(Resource):
         print((g, r, b, w))
         LED_STRIP.light((g, r, b, w))
 
+flame = Flame()
+fire = Fire()
 
 class LedDashboard(Resource):
     def __init__(self):
@@ -55,13 +57,14 @@ class LedDashboard(Resource):
 
         if current_mode != mode:
             if mode == 'ww':
-                Fire().burn()
+                fire.burn()
                 #LED_STRIP.warm_white()
                 current_mode = mode
 
             if mode == 'th':
+                flame.burn()
                 #LED_STRIP.thunder()
-                Flame().burn()
+
                 current_mode = mode
 
             if mode == 'off':
