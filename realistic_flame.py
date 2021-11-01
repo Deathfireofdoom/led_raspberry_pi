@@ -74,7 +74,5 @@ class Flame(object):
 
 if __name__ == '__main__':
     flame = Flame()
-    sleep(2)
-    flame.explosion()
-    sleep(2)
+    #flame.explosion()
     flame.burn()
