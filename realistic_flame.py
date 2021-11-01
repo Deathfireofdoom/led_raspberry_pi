@@ -20,7 +20,7 @@ class Flame(object):
         self.gradient = FireGradient()
 
 
-    def burn(self, spark_cells=[0, 1, 2], threshold=0.5, explosion_heat=[1500, 1600]):
+    def burn(self, spark_cells=[0, 1, 2], threshold=0.1, explosion_heat=[1500, 1600]):
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
