@@ -32,7 +32,7 @@ class Flame(object):
 
 
 
-    def burn(self, spark_cells=[0, 1, 2, 147, 148, 149], threshold=0.5, explosion_heat=[1000, 1200]):
+    def burn(self, spark_cells=[0, 1, 2], threshold=0.5, explosion_heat=[1000, 1200]):
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
@@ -47,10 +47,15 @@ class Flame(object):
             sleep(0.01)
 
     def calculate_temperature(self, span=2):
-        for i in range(len(self.cells)):
+        for i in range(self.size//2):
             new_temp = np.average(self.cells[max(0, i-span):i + span])
             self.strip.setPixelColor(i, self.gradient.get_color(new_temp))
             self.cells[i] = max(0, new_temp - self.cooling) if not np.isnan(new_temp) else 0.0
+
+            inverted_i = self.size - i - 1
+            self.strip.setPixelColor(inverted_i, self.gradient.get_color(new_temp))
+            self.cells[inverted_i] = max(0, new_temp - self.cooling) if not np.isnan(new_temp) else 0.0
+
         self.strip.show()
 
 
