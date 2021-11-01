@@ -34,7 +34,7 @@ class Flame(object):
             new_temp = np.average(self.cells[max(0, i-span):i + span])
             self.strip.setPixelColor(i, self.gradient.get_color(new_temp))
             self.cells[i] = max(0, new_temp - self.cooling) if not np.isnan(new_temp) else 0.0
-
+        self.strip.show()
 
 
 
