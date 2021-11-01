@@ -30,7 +30,7 @@ class Flame(object):
             sleep(0.005)
 
 
-    def fire_place(self, height=10, threshold):
+    def fire_place(self, height=10, threshold=0.6):
         pass
 
 
