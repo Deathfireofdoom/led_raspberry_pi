@@ -42,7 +42,7 @@ class Gradient(object):
                             start_color.color[1] + color_step[1] * i,
                             start_color.color[2] + color_step[2] * i,
                             start_color.color[3] + color_step[3] * i))
-            next_color = tuple(map(lambda c: min(max(0, c), 255), next_color))
+            next_color = tuple(map(lambda c: int(min(max(0, c), 255)), next_color))
             span.append(Color(next_color[0], next_color[1], next_color[2], next_color[3]))
         return span
 
