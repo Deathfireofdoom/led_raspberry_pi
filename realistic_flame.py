@@ -19,6 +19,15 @@ class Flame(object):
         self.cells = np.zeros(size)
         self.gradient = FireGradient()
 
+    def explosion(self, heat=1200, number_of_explosion=3):
+        for i in range(number_of_explosion):
+            self.cells[i] = heat
+
+        while not all(color == (0, 0, 0, 0) for color in self.colors):
+            self.calculate_temperature()
+            sleep(0.01)
+
+
 
     def burn(self, spark_cells=[0, 1, 2], threshold=0.1, explosion_heat=[1000, 1200]):
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
@@ -42,4 +51,7 @@ class Flame(object):
 
 if __name__ == '__main__':
     flame = Flame()
+    sleep(2)
+    flame.explosion()
+    sleep(2)
     flame.burn()
