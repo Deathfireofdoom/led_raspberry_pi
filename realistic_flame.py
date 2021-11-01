@@ -13,7 +13,7 @@ from gradient import FireGradient
 
 
 class Flame(object):
-    def __init__(self, size=60, cooling=5):
+    def __init__(self, size=60, cooling=10):
         self.strip = LedStrip().light((0,0,0,0)).strip
         self.size = self.strip.numPixels()
         self.cooling = cooling
@@ -41,7 +41,7 @@ class Flame(object):
             if random.random() < threshold:
                 self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
             self.calculate_temperature()
-            sleep(0.015)
+            sleep(0.02)
 
     def calculate_temperature(self, span=2):
         for i in range(self.size//2):
