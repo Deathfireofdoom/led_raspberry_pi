@@ -22,8 +22,8 @@ class Flame(object):
     def explosion(self, heat=1200, number_of_explosion=3):
         for i in range(number_of_explosion):
             self.cells[i] = heat
-        print([color == (0, 0, 0, 0) for color in self.cells])
-        while not all([color == (0, 0, 0, 0) for color in self.cells]):
+        print([all(color == (0, 0, 0, 0)) for color in self.cells])
+        while not all([all(color == (0, 0, 0, 0)) for color in self.cells]):
             self.calculate_temperature()
             sleep(0.01)
 
