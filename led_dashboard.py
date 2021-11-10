@@ -66,18 +66,18 @@ class LedDashboard(Resource):
                 thread.terminate()
                 print('hee')
 
-            if mode == 'gr':
-                thread = Process(target=self.fire.burn()).start()
-                print(thread)
-                threads.append(thread)
-                print(len(threads))
-                #LED_STRIP.warm_white()
+            if mode == 'ww':
+                #thread = Process(target=self.fire.burn()).start()
+                #print(thread)
+                #threads.append(thread)
+                #print(len(threads))
+                LED_STRIP.warm_white()
                 current_mode = mode
 
             if mode == 'th':
-                thread = Process(target=self.flame.burn()).start()
-                threads.append(thread)
-                #LED_STRIP.thunder()
+                #thread = Process(target=self.flame.burn()).start()
+                #threads.append(thread)
+                LED_STRIP.thunder()
 
                 current_mode = mode
 
