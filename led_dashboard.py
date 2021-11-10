@@ -32,14 +32,14 @@ class ColorPicker(Resource):
         print((g, r, b, w))
         LED_STRIP.light((g, r, b, w))
 
-
+global
+threads = []
 
 class LedDashboard(Resource):
     def __init__(self):
         super().__init__()
         self.flame = Flame()
         self.fire = Fire()
-        self.threads = []
 
     def get(self):
         global current_mode
@@ -62,19 +62,19 @@ class LedDashboard(Resource):
         if current_mode != mode:
             print('ess')
             print(self.threads)
-            for thread in self.threads:
+            for thread in threads:
                 print('eyesesa')
                 thread.stop()
 
             if mode == 'ww':
                 thread = Thread(target=self.fire.burn()).start()
-                self.threads.append(thread)
+                threads.append(thread)
                 #LED_STRIP.warm_white()
                 current_mode = mode
 
             if mode == 'th':
                 thread = Thread(target=self.flame.burn()).start()
-                self.threads.append(thread)
+                threads.append(thread)
                 #LED_STRIP.thunder()
 
                 current_mode = mode
