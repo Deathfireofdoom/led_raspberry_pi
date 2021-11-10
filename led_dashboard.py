@@ -52,6 +52,7 @@ class LedDashboard(Resource):
     def post(self):
         global current_mode
         global current_brightness
+        global threads
 
         mode = request.args.get('mode')
         brightness = int(request.args.get('brightness'))
@@ -60,6 +61,7 @@ class LedDashboard(Resource):
 
         if current_mode != mode:
             for thread in threads:
+
                 thread.stop()
 
             if mode == 'ww':
