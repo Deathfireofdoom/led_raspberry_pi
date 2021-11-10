@@ -5,6 +5,7 @@ from realistic_flame import Flame
 from fire import Fire
 
 from threading import Thread
+from multiprocessing import Process
 
 app = Flask(__name__)
 api = Api(app)
@@ -66,13 +67,13 @@ class LedDashboard(Resource):
                 thread.join()
 
             if mode == 'ww':
-                thread = Thread(target=self.fire.burn()).start()
+                thread = Process(target=self.fire.burn()).start()
                 threads.append(thread)
                 #LED_STRIP.warm_white()
                 current_mode = mode
 
             if mode == 'th':
-                thread = Thread(target=self.flame.burn()).start()
+                thread = Process(target=self.flame.burn()).start()
                 threads.append(thread)
                 #LED_STRIP.thunder()
 
