@@ -32,7 +32,6 @@ class ColorPicker(Resource):
         print((g, r, b, w))
         LED_STRIP.light((g, r, b, w))
 
-global
 threads = []
 
 class LedDashboard(Resource):
