@@ -63,6 +63,7 @@ class LedDashboard(Resource):
             for thread in threads:
 
                 thread.stop()
+                thread.join()
 
             if mode == 'ww':
                 thread = Thread(target=self.fire.burn()).start()
