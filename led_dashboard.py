@@ -66,7 +66,7 @@ class LedDashboard(Resource):
                 thread.terminate()
                 print('hee')
 
-            if mode == 'ww':
+            if mode == 'gr':
                 thread = Process(target=self.fire.burn()).start()
                 print(thread)
                 threads.append(thread)
