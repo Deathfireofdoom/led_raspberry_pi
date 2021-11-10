@@ -68,7 +68,9 @@ class LedDashboard(Resource):
 
             if mode == 'ww':
                 thread = Process(target=self.fire.burn()).start()
+                print(thread)
                 threads.append(thread)
+                print(len(threads))
                 #LED_STRIP.warm_white()
                 current_mode = mode
 
