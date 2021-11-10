@@ -59,10 +59,7 @@ class LedDashboard(Resource):
         print(current_mode != mode)
 
         if current_mode != mode:
-            print('ess')
-            print(self.threads)
             for thread in threads:
-                print('eyesesa')
                 thread.stop()
 
             if mode == 'ww':
