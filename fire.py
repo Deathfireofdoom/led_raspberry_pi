@@ -14,12 +14,13 @@ class Fire(object):
         self.sparks = [Spark(np.array(color_code1), color_distance) for _ in range(self.strip.numPixels())]
 
     def burn(self):
-        for i, spark in enumerate(self.sparks):
-            color = spark.next_color()
-            color = tuple(min(max(int(c), 0), 255) for c in color)
-            self.strip.setPixelColor(i, Color(*color))
-        time.sleep(0.02)
-        self.strip.show()
+        while True:
+            for i, spark in enumerate(self.sparks):
+                color = spark.next_color()
+                color = tuple(min(max(int(c), 0), 255) for c in color)
+                self.strip.setPixelColor(i, Color(*color))
+            time.sleep(0.02)
+            self.strip.show()
 
 class Spark(object):
     def __init__(self, base_color, color_distance, threshold=0.8, speed_threshold=[10, 20], intensity_threshold=[0.5, 0.8]):

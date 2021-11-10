@@ -4,6 +4,8 @@ from led_modes import LedStrip
 from realistic_flame import Flame
 from fire import Fire
 
+from threading import Thread
+
 app = Flask(__name__)
 api = Api(app)
 
@@ -37,6 +39,7 @@ class LedDashboard(Resource):
         super().__init__()
         self.flame = Flame()
         self.fire = Fire()
+        self.threads = []
 
     def get(self):
         global current_mode
@@ -57,13 +60,18 @@ class LedDashboard(Resource):
         print(current_mode != mode)
 
         if current_mode != mode:
+            for thread in self.threads:
+                thread.stop()
+
             if mode == 'ww':
-                self.fire.burn()
+                thread = Thread(target=self.fire.burn()).start()
+                self.threads.append(thread)
                 #LED_STRIP.warm_white()
                 current_mode = mode
 
             if mode == 'th':
-                self.flame.burn()
+                thread = Thread(target=self.flame.burn()).start()
+                self.threads.append(thread)
                 #LED_STRIP.thunder()
 
                 current_mode = mode
