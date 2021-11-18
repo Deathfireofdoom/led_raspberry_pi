@@ -84,7 +84,7 @@ class LedDashboard(Resource):
                 state_file_name = '_state_flame'
                 with open(state_file_name, 'w+') as _:
                     pass
-                Process(target=self.flame.burn(state_file_name)).start()
+                Process(target=self.flame.burn2(state_file_name)).start()
 
                 #LED_STRIP.thunder()
 
