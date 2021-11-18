@@ -34,13 +34,13 @@ class Flame(object):
     def fire_place(self, height=10, threshold=0.2):
         pass
 
-    def burn2(self, state_file_name, spark_cells=range(10), threshold=0.2, explosion_heat=[1200, 1300]):
+    def burn2(self, state_file_name='test', spark_cells=range(10), threshold=0.2, explosion_heat=[1200, 1300]):
         self.cooling = 5
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
 
-        while os.path.isfile(state_file_name):
+        while not os.path.isfile(state_file_name):
             if random.random() < threshold:
                 self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
             self.calculate_temperature()
