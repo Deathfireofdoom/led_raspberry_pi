@@ -63,7 +63,11 @@ class LedDashboard(Resource):
         print(current_mode != mode)
 
         if current_mode != mode:
-            os.remove(glob.glob('_state_*')[0])
+            try:
+                os.remove(glob.glob('_state_*')[0])
+            except Exception:
+                pass #TODO Fix this
+
             for thread in threads:
 
                 thread.terminate()
