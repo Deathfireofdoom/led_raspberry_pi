@@ -35,7 +35,7 @@ class Flame(object):
         pass
 
     def burn2(self, state_file_name, spark_cells=range(10), threshold=0.6, explosion_heat=[900, 1500]):
-        self.cooling = 3
+        self.cooling = 5
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
