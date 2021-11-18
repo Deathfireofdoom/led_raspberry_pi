@@ -87,7 +87,7 @@ class LedDashboard(Resource):
                     pass
                 Process(target=self.flame.burn(state_file_name)).start()
 
-                LED_STRIP.thunder()
+                #LED_STRIP.thunder()
 
                 current_mode = mode
 
