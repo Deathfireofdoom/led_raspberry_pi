@@ -2,7 +2,8 @@ import random
 import numpy as np
 from time import sleep
 from led_modes import LedStrip
-
+import os
+import glob
 
 
 from gradient import FireGradient
@@ -34,16 +35,17 @@ class Flame(object):
         pass
 
 
-    def burn(self, spark_cells=range(30), threshold=0.5, explosion_heat=[900, 1000]):
+    def burn(self, state_file_name, spark_cells=range(30), threshold=0.5, explosion_heat=[900, 1000]):
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
         self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
 
-        while True:
+        while os.path.isfile(state_file_name):
             if random.random() < threshold:
                 self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
             self.calculate_temperature()
             sleep(0.02)
+        return
 
     def calculate_temperature(self, span=2):
         for i in range(self.size//2):

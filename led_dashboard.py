@@ -3,6 +3,8 @@ from flask_restful import Resource, Api
 from led_modes import LedStrip
 from realistic_flame import Flame
 from fire import Fire
+import os
+import glob
 
 from threading import Thread
 from multiprocessing import Process
@@ -61,6 +63,7 @@ class LedDashboard(Resource):
         print(current_mode != mode)
 
         if current_mode != mode:
+            os.remove(glob.glob('_state_*')[0])
             for thread in threads:
 
                 thread.terminate()
@@ -75,8 +78,11 @@ class LedDashboard(Resource):
                 current_mode = mode
 
             if mode == 'th':
-                #thread = Process(target=self.flame.burn()).start()
-                #threads.append(thread)
+                state_file_name = '_state_fire'
+                with open(state_file_name, 'w+') as _:
+                    pass
+                Process(target=self.flame.burn(state_file_name)).start()
+
                 LED_STRIP.thunder()
 
                 current_mode = mode
