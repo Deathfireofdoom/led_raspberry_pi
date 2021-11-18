@@ -74,15 +74,12 @@ class LedDashboard(Resource):
                 print('hee')
 
             if mode == 'ww':
-                #thread = Process(target=self.fire.burn()).start()
-                #print(thread)
-                #threads.append(thread)
-                #print(len(threads))
-                LED_STRIP.warm_white()
+                state_file_name = '_state_fire'
+                Process(target=self.fire.burn(state_file_name)).start()
                 current_mode = mode
 
-            if mode == 'th':
-                state_file_name = '_state_fire'
+            if mode == 'gr':
+                state_file_name = '_state_flame'
                 with open(state_file_name, 'w+') as _:
                     pass
                 Process(target=self.flame.burn(state_file_name)).start()
@@ -98,7 +95,7 @@ class LedDashboard(Resource):
             if mode == 'xmas':
                 LED_STRIP.christmas_light()
 
-            if mode == 'gr':
+            if mode == 'tmp_gr':
                 c1 = (150, 0, 0, 0)
                 c2 = (0, 150, 0, 0)
                 LED_STRIP.gradient(c1, c2)
