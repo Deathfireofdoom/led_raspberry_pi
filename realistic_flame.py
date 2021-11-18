@@ -90,4 +90,4 @@ class Flame(object):
 if __name__ == '__main__':
     flame = Flame()
     #flame.explosion()
-    flame.burn()
+    flame.burn2()
