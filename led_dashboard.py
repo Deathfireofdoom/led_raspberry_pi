@@ -63,10 +63,9 @@ class LedDashboard(Resource):
         print(current_mode != mode)
 
         if current_mode != mode:
-            try:
-                os.remove(glob.glob('_state_*')[0])
-            except Exception:
-                pass #TODO Fix this
+            files = glob.glob('_state_*')[0]
+            for file in files:
+                os.remove(file)
 
             for thread in threads:
 
