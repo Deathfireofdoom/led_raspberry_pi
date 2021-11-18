@@ -63,7 +63,7 @@ class LedDashboard(Resource):
         print(current_mode != mode)
 
         if current_mode != mode:
-            files = glob.glob('_state_*')[0]
+            files = glob.glob('_state_*')
             for file in files:
                 os.remove(file)
 
