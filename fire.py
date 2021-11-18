@@ -70,7 +70,7 @@ class Spark(object):
 
 if __name__ == '__main__':
 
-    #fire = Fire(color_code1=(40, 1, 70, 0), color_code2=(72, 0, 140, 0))
-    fire = Fire(color_code1=(10, 94, 0, 0), color_code2=(13, 255, 0, 0))
+    fire = Fire(color_code1=(40, 1, 70, 0), color_code2=(72, 0, 140, 0))
+    #fire = Fire(color_code1=(10, 94, 0, 0), color_code2=(13, 255, 0, 0))
     while True:
         fire.burn()
