@@ -45,7 +45,6 @@ class Flame(object):
                 self.cells[random.sample(spark_cells, 1)] = random.randint(*explosion_heat)
             self.calculate_temperature()
             sleep(0.001)
-            print('hello')
         return
 
     def burn(self, state_file_name, spark_cells=range(30), threshold=0.5, explosion_heat=[900, 1000]):
