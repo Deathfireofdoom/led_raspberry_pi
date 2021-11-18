@@ -8,7 +8,7 @@ import os
 LED_STRIP = LedStrip()
 
 class Fire(object):
-    def __init__(self, color_code1=(136, 253, 0, 0), color_code2=(255, 223, 24, 0)):
+    def __init__(self, color_code1=(10, 94, 0, 0), color_code2=(13, 255, 0, 0)):
         color_distance = np.subtract(color_code2, color_code1)
         self.strip = LED_STRIP.strip
 
