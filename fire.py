@@ -3,6 +3,7 @@ import random
 from led_modes import LedStrip
 from rpi_ws281x import Color
 import time
+import os
 
 LED_STRIP = LedStrip()
 
@@ -14,9 +15,7 @@ class Fire(object):
         self.sparks = [Spark(np.array(color_code1), color_distance) for _ in range(self.strip.numPixels())]
 
     def burn(self, state_file_name):
-        with open(state_file_name, 'w+') as _:
-            pass
-        while True:
+        while os.path.isfile(state_file_name):
             for i, spark in enumerate(self.sparks):
                 color = spark.next_color()
                 color = tuple(min(max(int(c), 0), 255) for c in color)

@@ -75,7 +75,10 @@ class LedDashboard(Resource):
 
             if mode == 'ww':
                 state_file_name = '_state_fire'
+                with open(state_file_name, 'w+') as _:
+                    pass
                 Process(target=self.fire.burn(state_file_name)).start()
+
                 current_mode = mode
 
             if mode == 'gr':
